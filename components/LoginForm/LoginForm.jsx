@@ -13,7 +13,6 @@ const LoginForm = () => {
     const [model, setModel] = useState({
         login: "",
         password: "",
-        password_confirmation: "",
     });
 
     const submit = (e) => {

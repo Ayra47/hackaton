@@ -20,10 +20,16 @@ const RegisterForm = () => {
 
     const submit = (e) => {
         e.preventDefault();
+        setErrors("");
         setSpinner(true);
         (async () => {
-            const service = registerApi(model);
-            console.log('service', service);
+            try {
+                const service = registerApi(model);
+                console.log('service', service);
+            } catch(e) {
+                console.log('error', e);
+                setErrors(e.errors)
+            }
             setSpinner(false)
         })();
     };
@@ -98,13 +104,16 @@ const RegisterForm = () => {
                         />
                     </div> */}
                     <div className="form-group">
-                        <CreateButton color="orange">Войти</CreateButton>
+                        <CreateButton color="orange">Регистрация</CreateButton>
                     </div>
+                    {
+                        errors ? <div className="form-group error">{errors}</div> : null
+                    }
                 </div>
                 <div className="base-form__content base-form__footer">
                     <h4 className="form-group">Есть аккаунт?</h4>
                     <Link className="base-form__content-link" href={"/login"}>
-                        Регистрация
+                        Вход
                     </Link>
                 </div>
             </form>
