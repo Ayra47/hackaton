@@ -1,0 +1,30 @@
+.section__create {
+    .product {
+
+        &-link__back {
+            color: black;
+            text-decoration: underline ;
+            
+            &:hover {
+                color: #ccc;
+            }
+        }
+
+        &__content {
+            margin-top: 12px;
+            background: #C9D6FF;
+            background: -webkit-linear-gradient(to right, #E2E2E2, #C9D6FF);
+            background: linear-gradient(to right, #E2E2E2, #C9D6FF);
+
+            &__text{
+                color: black;
+            }
+
+            
+
+        }
+
+    }
+
+
+}
