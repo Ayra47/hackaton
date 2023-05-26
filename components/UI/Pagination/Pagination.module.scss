@@ -7,13 +7,17 @@
     padding: 12px 0;
 
     a {
-        background: $color-red;
+        background: $color-gray-blue;
         border-radius: 100%;
         width: 30px;
         height: 30px;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #fff;
+        color: #000;
+
+        &:hover {
+            background: $color-gray-light;
+        }
     }
 }

@@ -7,7 +7,6 @@ import Link from "next/link";
 
 export default function Filter(props) {
     const [checkboxBlock, setCheckboxBlock] = useState(false);
-
     const filter = () => {
         var list = [];
         for (var key in props.filter) {

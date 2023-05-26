@@ -2,29 +2,65 @@
 
 .catalog {
     &__item {
-        background: #ccc;
+        background: #C9D6FF;
+        background: -webkit-linear-gradient(to right, #E2E2E2, #C9D6FF);
+        background: linear-gradient(to right, #E2E2E2, #C9D6FF);
+        
         padding: 12px;
         border-radius: 12px;
         display: flex;
-        flex-direction: column; 
+        flex-direction: column;
         gap: 4px;
+
+        &-block-price {
+            border: solid 1px;
+            display: flex;
+            align-items: center;
+            border-radius: 12px;
+            padding: 4px 8px;
+            flex-direction: row;
+            gap:6px
+        }
+        &-button{
+            
+
+        }
+
+        &-block-control {
+            display: flex;
+            flex-direction: row;
+            gap:6px
+        }
 
         &-price {
             color: #000;
+            text-align: center;
 
             &--discount {
                 color: $color-red;
+                font-size: 24px;
+
             }
+
             &--old {
                 text-decoration: line-through;
+
             }
+
             &--percent {
                 color: $color-red;
             }
+
             &-wrapper {
                 display: flex;
                 gap: 8px;
+                justify-content: center;
             }
+        }
+
+        &-img {
+            border-radius: 12px;
+
         }
     }
 

@@ -30,14 +30,17 @@ export default function CatalogItems({ products }) {
                                         >
                                             {item.price} ₽
                                         </div>
-                                        <div
-                                            className={`${s["catalog__item-price"]} ${s["catalog__item-price--old"]}`}
-                                        >
-                                            {item.old_price} ₽
+                                        <div className={s["catalog__item-block-price"]}>
+
+                                            <div
+                                                className={`${s["catalog__item-price"]} ${s["catalog__item-price--old"]}`}
+                                            >
+                                                {item.old_price} ₽
+                                            </div>
+                                            <div
+                                                className={`${s["catalog__item-price"]} ${s["catalog__item-price--percent"]}`}
+                                            >-{percent.toFixed(2)} %</div>
                                         </div>
-                                        <div
-                                            className={`${s["catalog__item-price"]} ${s["catalog__item-price--percent"]}`}
-                                        >-{percent.toFixed(2)} %</div>
                                     </div>
                                 ) : (
                                     <div className={s["catalog__item-price"]}>
@@ -47,8 +50,22 @@ export default function CatalogItems({ products }) {
                                 <div className={s["catalog__item-name"]}>
                                     {item.name}
                                 </div>
-                                <div style={{marginTop: 'auto'}}>
-                                    <CreateButton size='sm'>Добавить в корзину</CreateButton>
+
+                                <div className={s["catalog__item-block-price"]}>
+                                    <h id="dateHeading">Дата 1</h>
+                                    <h id="dateHeading">:</h>
+                                    <h id="dateHeading">Дата 2</h>
+                                </div>
+                                <div className={s["catalog__item-block-control"]}>
+
+                                    <div style={{ marginTop: 'auto' }}>
+                                        <CreateButton color="blue" size='sm'>Добавить в корзину</CreateButton>
+                                    </div>
+                                    <div style={{ marginTop: 'auto' }}>
+                                        <CreateButton className="catalog__item-button">
+                                            <img src="/svg/like/Heart.svg" alt="next" />
+                                        </CreateButton>
+                                    </div>
                                 </div>
                             </div>
                         );
