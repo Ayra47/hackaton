@@ -14,7 +14,6 @@ export default function HotRecomendation({ products }) {
                     🔥Горящие товары🔥
                 </div>
                 <Swiper
-                    loop={true}
                     modules={[Pagination, A11y]}
                     spaceBetween={50}
                     slidesPerView={1}
