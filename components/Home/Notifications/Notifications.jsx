@@ -1,6 +1,7 @@
 import CreateButton from '@/components/UI/Buttons/CreateButton';
 import s from './Notifications.module.scss';
 import CreateInput from '@/components/UI/Inputs/CreateInput';
+import Link from 'next/link';
 
 export default function Notify() {
     return (
@@ -12,8 +13,7 @@ export default function Notify() {
                 <div className="notify__subtitle">
                     Подпишитесь на нашу рассылку и получайте еженедельную подборку лучших товаров
                 </div>
-                <CreateInput focus="blue" placeholder='Введите email' />
-                <CreateButton color='orange'>Подписаться</CreateButton>
+                <Link href={'/telebot'}>AgroUnits</Link>
             </div>
         </div>
     )
