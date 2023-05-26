@@ -7,6 +7,7 @@ import Loader from "@/components/UI/Loader/Loader";
 import s from "./LoginForm.module.scss";
 import Link from "next/link";
 import { authApi } from "@/services/AuthService";
+import { setCookie } from 'cookies-next';
 
 const LoginForm = () => {
     const [spinner, setSpinner] = useState(false);
