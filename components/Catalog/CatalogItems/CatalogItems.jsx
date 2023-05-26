@@ -30,14 +30,17 @@ export default function CatalogItems({ products }) {
                                         >
                                             {item.price} ₽
                                         </div>
-                                        <div
-                                            className={`${s["catalog__item-price"]} ${s["catalog__item-price--old"]}`}
-                                        >
-                                            {item.old_price} ₽
+                                        <div className={s["catalog__item-block-price"]}>
+                                            
+                                            <div
+                                                className={`${s["catalog__item-price"]} ${s["catalog__item-price--old"]}`}
+                                            >
+                                                {item.old_price} ₽
+                                            </div>
+                                            <div
+                                                className={`${s["catalog__item-price"]} ${s["catalog__item-price--percent"]}`}
+                                            >-{percent.toFixed(2)} %</div>
                                         </div>
-                                        <div
-                                            className={`${s["catalog__item-price"]} ${s["catalog__item-price--percent"]}`}
-                                        >-{percent.toFixed(2)} %</div>
                                     </div>
                                 ) : (
                                     <div className={s["catalog__item-price"]}>
@@ -47,8 +50,8 @@ export default function CatalogItems({ products }) {
                                 <div className={s["catalog__item-name"]}>
                                     {item.name}
                                 </div>
-                                <div style={{marginTop: 'auto'}}>
-                                    <CreateButton size='sm'>Добавить в корзину</CreateButton>
+                                <div style={{ marginTop: 'auto' }}>
+                                    <CreateButton color="blue" size='sm'>Добавить в корзину</CreateButton>
                                 </div>
                             </div>
                         );
