@@ -21,6 +21,14 @@
         }
     }
 
+    &--orange {
+        background: $color-orange;
+
+        &:hover {
+            background: $color-yellow-orange;
+        }
+    }
+
     &--red {
         background: $color-red;
 

@@ -13,7 +13,7 @@ export default function Notify() {
                     Подпишитесь на нашу рассылку и получайте еженедельную подборку лучших товаров
                 </div>
                 <CreateInput focus="blue" placeholder='Введите email' />
-                <CreateButton color='blue'>Подписаться</CreateButton>
+                <CreateButton color='orange'>Подписаться</CreateButton>
             </div>
         </div>
     )
