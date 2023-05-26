@@ -1,0 +1,197 @@
+@import "/styles/variables";
+@import "/styles/mixins";
+
+.sidebar {
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    width: 100vw;
+    left: 0;
+    top: 0;
+    height: 40px;
+    z-index: 1000;
+    width: 100%;
+
+    &__menu {
+        height: 100%;
+        display: flex;
+    }
+
+    &__title {
+        display: none;
+
+        @include md-max {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+    }
+}
+
+input.menu__toggle {
+    display: none;
+}
+/* стилизуем кнопку */
+.menu__btn {
+    display: none;
+    @include md-max {
+        display: flex; /* используем flex для центрирования содержимого */
+        align-items: center; /* центрируем содержимое кнопки */
+        position: fixed;
+        top: 8px;
+        left: 20px;
+        width: 26px;
+        height: 26px;
+        cursor: pointer;
+        z-index: 1;
+    }
+}
+/* добавляем "гамбургер" */
+.menu__btn > span,
+.menu__btn > span::before,
+.menu__btn > span::after {
+    display: none;
+    @include md-max {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: #fff;
+    }
+}
+.menu__btn > span::before {
+    content: "";
+    top: -8px;
+}
+.menu__btn > span::after {
+    content: "";
+    top: 8px;
+}
+
+/* контейнер меню */
+.menu__box {
+    list-style: none;
+    gap: 12px;
+    width: 100%;
+    @include md-max {
+        display: block;
+        position: fixed;
+        visibility: hidden;
+        top: 0;
+        left: -100%;
+        width: 300px;
+        height: 100%;
+        margin: 0;
+        padding: 80px 0;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.8);
+        box-shadow: 1px 0px 6px rgba(0, 0, 0, 0.2);
+    }
+}
+/* элементы меню */
+.menu__item {
+    display: block;
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 4px 5px;
+
+    &:hover {
+        color: #ccc;
+    }
+
+    @include md-max {
+        font-size: 16px;
+    }
+
+    &--right {
+        display: flex;
+        margin-left: auto;
+
+        @include md-max {
+            margin-left: 0;
+        }
+    }
+
+    &-logo {
+        width: 30px;
+        height: 30px;
+        border-radius: 100%;
+    }
+
+    &-lk {
+        border-radius: 100%;
+        background: $color-yellow-orange;
+        position: relative;
+        &::before {
+            position: absolute;
+            right: -10px;
+            top: 70%;
+            content: "";
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid $color-orange;
+        }
+    }
+
+    &-auth {
+        margin-left: auto;
+        &:hover {
+            color: #ccc;
+        }
+        &--border {
+            border: 1px solid #ffffff;
+            border-radius: 5px;
+
+            &:hover {
+                border: 1px solid #ccc;
+            }
+        }
+    }
+}
+.menu__item:hover {
+    @include md-max {
+        background-color: #ccc;
+        color: $color-title;
+    }
+}
+input.menu__toggle:checked ~ .menu__btn > span {
+    transform: rotate(45deg);
+}
+input.menu__toggle:checked ~ .menu__btn > span::before {
+    top: 0;
+    transform: rotate(0);
+    background: #fff;
+}
+input.menu__toggle:checked ~ .menu__btn > span::after {
+    top: 0;
+    transform: rotate(90deg);
+    background: #fff;
+}
+input.menu__toggle:checked ~ .menu__box {
+    visibility: visible;
+    left: 0;
+}
+.menu__btn > span,
+.menu__btn > span::before,
+.menu__btn > span::after {
+    transition-duration: 0.25s;
+}
+.menu__box {
+    display: flex;
+    transition-duration: 0.25s;
+    align-items: center;
+
+    @include md-max {
+        flex-direction: column;
+    }
+}
+.menu__item {
+    transition-duration: 0.25s;
+}
