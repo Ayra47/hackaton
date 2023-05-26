@@ -42,9 +42,9 @@ const LoginForm = () => {
                     <div className="form-group">
                         <label className="form-group" htmlFor="">Логин</label>
                         <CreateInput focus="blue"
-                            value={model.login}
+                            value={model.email}
                             onChange={(e) =>
-                                changeField("login", e.target.value)
+                                changeField("email", e.target.value)
                             }
                             type="text"
                             placeholder="Логин"
