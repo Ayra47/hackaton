@@ -25,20 +25,16 @@ export default function Page () {
         })()
     }, [])
 
-    async function checkMe() {
-        const token = getCookie("jwt")
-        const checked = await CheckUser(token)
-        console.log('checked', checked);
-    }
-
     return (
-        <div className="w-container">
+        <div style={{display: "flex", flexDirection: "column"}} className="w-container">
             <div>
                 hello {user}
             </div>
-            <button onClick={checkMe}>check me</button>
             <Link href='/account/setting'>
                 setting page
+            </Link>
+            <Link href='/account/products'>
+                products page
             </Link>
         </div>
     )
