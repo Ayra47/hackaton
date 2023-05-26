@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import CreateButton from "@/components/Buttons/CreateButton";
-import CreateInput from "@/components/Inputs/CreateInput";
-import Loader from "@/components/Loader/Loader";
+import CreateButton from "@/components/UI/Buttons/CreateButton";
+import CreateInput from "@/components/UI/Inputs/CreateInput";
+import Loader from "@/components/UI/Loader/Loader";
 import s from "./LoginForm.module.scss";
 import Link from "next/link";
 

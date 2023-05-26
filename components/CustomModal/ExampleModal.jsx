@@ -1,5 +1,5 @@
 "use client";
-import CreateButton from "@/components/Buttons/CreateButton";
+import CreateButton from "@/components/UI/Buttons/CreateButton";
 import CustomModal from "@/components/CustomModal/CustomModal";
 import { useState } from "react";
 

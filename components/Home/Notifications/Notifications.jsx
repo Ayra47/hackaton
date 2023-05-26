@@ -1,6 +1,6 @@
-import CreateButton from '@/components/Buttons/CreateButton';
+import CreateButton from '@/components/UI/Buttons/CreateButton';
 import s from './Notifications.module.scss';
-import CreateInput from '@/components/Inputs/CreateInput';
+import CreateInput from '@/components/UI/Inputs/CreateInput';
 
 export default function Notify() {
     return (

@@ -1,7 +1,7 @@
 import HotRecomendation from "@/components/Home/HotRecomendation/HotRecomendation";
 import { HomeStartBanner } from "@/services/HomeService";
 import Notify from "@/components/Home/Notifications/Notifications";
-import { BkgAnimationBox } from "@/components/BkgAnimationBox/BkgAnimationBox";
+import { BkgAnimationBox } from "@/components/UI/BkgAnimationBox/BkgAnimationBox";
 import StartBanner from "@/components/Home/Start/StartBanner";
 
 const GetItems = () => {
