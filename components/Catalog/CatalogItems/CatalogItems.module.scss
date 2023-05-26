@@ -1,0 +1,36 @@
+@import '/styles/variables';
+
+.catalog {
+    &__item {
+        background: #ccc;
+        padding: 12px;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column; 
+        gap: 4px;
+
+        &-price {
+            color: #000;
+
+            &--discount {
+                color: $color-red;
+            }
+            &--old {
+                text-decoration: line-through;
+            }
+            &--percent {
+                color: $color-red;
+            }
+            &-wrapper {
+                display: flex;
+                gap: 8px;
+            }
+        }
+    }
+
+    &__items {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+}

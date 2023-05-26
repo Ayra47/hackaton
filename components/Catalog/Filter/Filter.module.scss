@@ -1,0 +1,28 @@
+.filter {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    &__entity {
+        display: flex;
+        flex-direction: column;
+        background: #ccc;
+        border-radius: 8px;
+        padding: 12px;
+
+        &-title {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        &-items {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &-item {
+            display: flex;
+            gap: 8px;
+        }
+    }
+}

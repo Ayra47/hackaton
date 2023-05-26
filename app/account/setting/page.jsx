@@ -1,7 +1,7 @@
+import SettingsForm from "@/components/Account/Settings/SettingsForm";
+
 export default function Settings() {
-    return <div>
-        <div className="w-container">
-            
-        </div>
-    </div>
+    return (
+        <SettingsForm />
+    )
 }
