@@ -81,80 +81,80 @@ const StartBanner = () => {
                             </div>
                             {/* Это БАЗА! */}
                             <div
-                                className={`${style.content__teachers} ${style.teachers}`}
+                                className={`${style.content__food} ${style.food}`}
                             >
                                 <div
                                     className={`${style.wrap} ${style["wrap--1"]}`}
                                 >
                                     <div
-                                        className={`${style["teachers__nameplate"]} ${style["teachers__nameplate--1"]}`}
+                                        className={`${style["food__nameplate"]} ${style["food__nameplate--1"]}`}
                                     >
                                         <div
-                                            className={`${style.teachers__name} ${style["teachers__name--red"]}`}
+                                            className={`${style.food__name} ${style["food__name--red"]}`}
                                         >
-                                            name
+                                            Лучшее
                                         </div>
                                         <div
                                             className={
-                                                style["teachers__profession"]
+                                                style["food__profession"]
                                             }
                                         >
-                                            name
+                                            качество
                                         </div>
                                     </div>
-                                    <img src="svg/photo1.svg" />
+                                    <img className={style["food-img"]} src="images\start-banner\fish.png" />
                                 </div>
                                 <div
                                     className={`${style.wrap} ${style["wrap--2"]}`}
                                 >
                                     <div
-                                        className={`${style.teachers__nameplate} ${style["teachers__nameplate--2"]}`}
+                                        className={`${style.food__nameplate} ${style["food__nameplate--2"]}`}
                                     >
                                         <div
-                                            className={`${style.teachers__name} ${style["teachers__name--red"]}`}
+                                            className={`${style.food__name} ${style["food__name--red"]}`}
                                         >
-                                            name
+                                            Простота
                                         </div>
                                         <div
                                             className={
-                                                style["teachers__profession"]
+                                                style["food__profession"]
                                             }
                                         >
-                                            name
+                                            работы
                                         </div>
                                     </div>
-                                    <img src="svg/photo2.svg" />
+                                    <img className={style["food-img"]} src="images\start-banner\fruits.png" />
                                 </div>
                                 <div
                                     className={`${style.wrap} ${style["wrap--3"]}`}
                                 >
-                                    <img src="svg/photo3.svg" />
+                                    <img className={style["food-img"]} src="images\start-banner\vegetables.png" />
                                 </div>
                                 <div
                                     className={`${style.wrap} ${style["wrap--4"]}`}
                                 >
                                     <div
-                                        className={`${style.teachers__nameplate} ${style["teachers__nameplate--3"]}`}
+                                        className={`${style.food__nameplate} ${style["food__nameplate--3"]}`}
                                     >
                                         <div
-                                            className={`${style.teachers__name} ${style["teachers__name--blue"]}`}
+                                            className={`${style.food__name} ${style["food__name--blue"]}`}
                                         >
-                                            name
+                                            Надежность
                                         </div>
                                         <div
                                             className={
-                                                style["teachers__profession"]
+                                                style["food__profession"]
                                             }
                                         >
-                                            name
+                                            во всём
                                         </div>
                                     </div>
-                                    <img src="svg/photo4.svg" />
+                                    <img className={style["food-img"]} src="images\start-banner\meat-perfect.png" />
                                 </div>
                                 <div
                                     className={`${style.wrap} ${style["wrap--5"]}`}
                                 >
-                                    <img src="svg/photo5.svg" />
+                                    <img className={style["food-img"]} src="images\start-banner\sauce.png" />
                                 </div>
                             </div>
                             <div className={style["search-bar"]}>

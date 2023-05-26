@@ -3,7 +3,8 @@ import s from './CreateButton.module.scss';
 const LinkButtonColorMap = {
     "blue": s['button--blue'],
     "red" : s['button--red'],
-    "contur" : s['button--contur']
+    "contur" : s['button--contur'],
+    "orange" : s['button--orange']
 }
 
 const LinkButtonSizeMap = {
