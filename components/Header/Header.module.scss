@@ -111,6 +111,7 @@ input.menu__toggle {
         display: flex;
         margin-left: auto;
         gap: 12px;
+        align-items: center;
 
         @include md-max {
             margin-left: 0;
@@ -132,18 +133,25 @@ input.menu__toggle {
         border-radius: 100%;
         background: $color-yellow-orange;
         position: relative;
-        &::before {
-            position: absolute;
-            right: -10px;
-            top: 70%;
-            content: "";
-            display: inline-block;
-            width: 0;
-            height: 0;
-            border-left: 5px solid transparent;
-            border-right: 5px solid transparent;
-            border-top: 5px solid $color-orange;
-        }
+        // &::before {
+        //     position: absolute;
+        //     right: -10px;
+        //     top: 70%;
+        //     content: "";
+        //     display: inline-block;
+        //     width: 0;
+        //     height: 0;
+        //     border-left: 5px solid transparent;
+        //     border-right: 5px solid transparent;
+        //     border-top: 5px solid $color-orange;
+        // }
+    }
+
+    &-exit {
+        border: none;
+        background: $color-red;
+        color: white;
+        border-radius: 4px;
     }
 
     &-auth {

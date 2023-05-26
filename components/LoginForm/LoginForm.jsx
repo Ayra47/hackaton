@@ -12,15 +12,23 @@ import { setCookie } from 'cookies-next';
 const LoginForm = () => {
     const [spinner, setSpinner] = useState(false);
     const [model, setModel] = useState({
-        login: "",
+        email: "",
         password: "",
     });
+    const [errors, setErrors] = useState();
 
     const submit = (e) => {
         e.preventDefault();
         setSpinner(true);
+        setErrors("");
         (async () => {
-            const service = authApi(model);
+            const service = await authApi(model);
+            if (service.success) {
+                setCookie('jwt', service.access_token)
+                window.location = `${process.env.NEXT_PUBLIC_HOST}/account`
+            } else {
+                setErrors(service.error)
+            }
             console.log('service', service);
             setSpinner(false)
         })();
@@ -41,14 +49,14 @@ const LoginForm = () => {
                 <div className="base-form__content">
                     <div className="form__title">Авторизация</div>
                     <div className="form-group">
-                        <label className="form-group" htmlFor="">Логин</label>
+                        <label className="form-group" htmlFor="">Email</label>
                         <CreateInput focus="blue"
                             value={model.email}
                             onChange={(e) =>
                                 changeField("email", e.target.value)
                             }
                             type="text"
-                            placeholder="Логин"
+                            placeholder="email"
                         />
                     </div>
                     <div className="form-group">
@@ -65,6 +73,12 @@ const LoginForm = () => {
                     <div className="form-group">
                         <CreateButton color="orange">Войти</CreateButton>
                     </div>
+                    {
+                        errors ?
+                    <div className="form-group error">
+                        {errors}
+                    </div> : null 
+                    }
                 </div>
                 <div className="base-form__content base-form__footer">
                     <h4 className="form-group">Нет аккаунта?</h4>

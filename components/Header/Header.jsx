@@ -3,8 +3,11 @@
 import Link from "next/link";
 import s from "./Header.module.scss";
 import { useEffect, useRef, useState } from "react";
+import { deleteCookie, getCookie } from "cookies-next";
+import { CheckUser } from "@/services/AuthService";
 
 export default function Header(props) {
+    const [user, setUser] = useState("")
     const sidebarRef = useRef(null);
     const [showSideBar, setShowSideBar] = useState(false);
 
@@ -14,6 +17,21 @@ export default function Header(props) {
         document.addEventListener("click", onClick);
         return () => document.removeEventListener("click", onClick);
     }, []);
+
+    useEffect(() => {
+        (async function() {
+            try {
+                const token = getCookie("jwt");
+                const service = await CheckUser(token)
+                setUser(service.logged_in_as)
+            } catch(e) {}
+        })()
+    }, []);
+
+    function exit(){
+        deleteCookie("jwt");
+        window.location = `${process.env.NEXT_PUBLIC_HOST}/login`
+    }
 
     return (
         <section ref={sidebarRef} className={`${s.sidebar}`}>
@@ -52,7 +70,7 @@ export default function Header(props) {
                             Партнёрам
                         </Link>
                     </li>
-                    {props.user ? (
+                    {user ? (
                         <div className={s["menu__item--right"]}>
                         <li>
                             <Link
@@ -69,6 +87,9 @@ export default function Header(props) {
                                 >
                                     <img src="/images/user.svg" alt="account" />
                                 </Link>
+                            </li>
+                            <li>
+                            <button onClick={exit} className={`${s.menu__item} ${s['menu__item-exit']}`}>Выход</button>
                             </li>
                         </div>
                     ) : (

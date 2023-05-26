@@ -6,11 +6,11 @@ export const metadata = {
     description: "Приложение разработанное командой из Башкирии",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
     return (
         <html lang="en">
             <body>
-                <Header user={true} />
+                <Header />
                 <main>{children}</main>
             </body>
         </html>
