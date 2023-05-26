@@ -40,11 +40,16 @@ const RegisterForm = () => {
 
     return (
         <div className={s["register-form"]}>
+            <img
+                src="/gif/wheat.gif"
+                className={s["register-form__gif"]}
+                alt="гифка"
+            />
             <form className="base-form" onSubmit={submit}>
                 <div className="base-form__content">
                     <div className="form__title">Регистрация</div>
                     <div className="form-group">
-                        <label htmlFor="">Логин</label>
+                        <label className="form-group" htmlFor="">Логин</label>
                         <CreateInput
                             value={model.login}
                             onChange={(e) =>
@@ -55,7 +60,7 @@ const RegisterForm = () => {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="">Пароль</label>
+                        <label className="form-group" htmlFor="">Пароль</label>
                         <CreateInput
                             value={model.password}
                             onChange={(e) =>
@@ -65,8 +70,8 @@ const RegisterForm = () => {
                             placeholder="Пароль"
                         />
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="">Повторите пароль</label>
+                    <div  className="form-group">
+                        <label className="form-group" htmlFor="">Повторите пароль</label>
                         <CreateInput
                             value={model.password_confirmation}
                             onChange={(e) =>
@@ -77,12 +82,12 @@ const RegisterForm = () => {
                         />
                     </div>
                     <div className="form-group">
-                        <CreateButton color="blue">Войти</CreateButton>
+                        <CreateButton color="orange">Войти</CreateButton>
                     </div>
                 </div>
                 <div className="base-form__content base-form__footer">
-                    <h4>Есть аккаунт?</h4>
-                    <Link href={"/login"}>Войти</Link>
+                    <h4 className="form-group">Есть аккаунт?</h4>
+                    <Link className='base-form__content-link' href={"/login"}>Войти</Link>
                 </div>
             </form>
             {spinner ? <Loader /> : null}
