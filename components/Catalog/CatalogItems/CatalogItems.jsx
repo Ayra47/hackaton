@@ -7,13 +7,13 @@ export default function CatalogItems({ products }) {
         <div className={s.section__catalog}>
             <div className={s.catalog}>
                 <div className={s.catalog__items}>
-                    {products.map((item) => {
+                    {products.map((item, index) => {
                         let percent = 0;
                         if (item.old_price) {
                             percent = (item.old_price - item.price) / item.old_price * 100
                         }
                         return (
-                            <div className={s.catalog__item}>
+                            <div className={s.catalog__item} key={index}>
                                 <img
                                     src={item.image}
                                     alt={item.name}
