@@ -6,31 +6,25 @@ import CreateInput from "@/components/UI/Inputs/CreateInput";
 import Loader from "@/components/UI/Loader/Loader";
 import s from "./RegisterForm.module.scss";
 import Link from "next/link";
+import { authApi, registerApi } from "@/services/AuthService";
 
 const RegisterForm = () => {
-    const [spinner, setSpinner] = useState(false)
+    const [spinner, setSpinner] = useState(false);
     const [model, setModel] = useState({
         login: "",
+        email: "",
         password: "",
         password_confirmation: "",
     });
+    const [errors, setErrors] = useState([])
 
     const submit = (e) => {
         e.preventDefault();
-        setSpinner(true)
-        console.log("model", model);
+        setSpinner(true);
         (async () => {
-            function artificialAwait(callback) {
-                setTimeout(function() {
-                  callback();
-                }, 5000); // 5000 миллисекунд = 5 секунд
-              }
-
-              artificialAwait(function() {
-                console.log("Пауза в 5 секунд завершена");
-                // выполняем действия после задержки
-                setSpinner(false)
-              });
+            const service = registerApi(model);
+            console.log('service', service);
+            setSpinner(false)
         })();
     };
 
@@ -49,7 +43,22 @@ const RegisterForm = () => {
                 <div className="base-form__content">
                     <div className="form__title">Регистрация</div>
                     <div className="form-group">
-                        <label className="form-group" htmlFor="">Логин</label>
+                        <label className="form-group" htmlFor="">
+                            Email
+                        </label>
+                        <CreateInput
+                            value={model.login}
+                            onChange={(e) =>
+                                changeField("email", e.target.value)
+                            }
+                            type="text"
+                            placeholder="Email"
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-group" htmlFor="">
+                            Логин
+                        </label>
                         <CreateInput
                             value={model.login}
                             onChange={(e) =>
@@ -60,7 +69,9 @@ const RegisterForm = () => {
                         />
                     </div>
                     <div className="form-group">
-                        <label className="form-group" htmlFor="">Пароль</label>
+                        <label className="form-group" htmlFor="">
+                            Пароль
+                        </label>
                         <CreateInput
                             value={model.password}
                             onChange={(e) =>
@@ -70,24 +81,31 @@ const RegisterForm = () => {
                             placeholder="Пароль"
                         />
                     </div>
-                    <div  className="form-group">
-                        <label className="form-group" htmlFor="">Повторите пароль</label>
+                    {/* <div className="form-group">
+                        <label className="form-group" htmlFor="">
+                            Повторите пароль
+                        </label>
                         <CreateInput
                             value={model.password_confirmation}
                             onChange={(e) =>
-                                changeField("password_confirmation", e.target.value)
+                                changeField(
+                                    "password_confirmation",
+                                    e.target.value
+                                )
                             }
                             type="password"
                             placeholder="Повторите пароль"
                         />
-                    </div>
+                    </div> */}
                     <div className="form-group">
                         <CreateButton color="orange">Войти</CreateButton>
                     </div>
                 </div>
                 <div className="base-form__content base-form__footer">
                     <h4 className="form-group">Есть аккаунт?</h4>
-                    <Link className='base-form__content-link' href={"/login"}>Войти</Link>
+                    <Link className="base-form__content-link" href={"/login"}>
+                        Регистрация
+                    </Link>
                 </div>
             </form>
             {spinner ? <Loader /> : null}

@@ -6,6 +6,7 @@ import CreateInput from "@/components/UI/Inputs/CreateInput";
 import Loader from "@/components/UI/Loader/Loader";
 import s from "./LoginForm.module.scss";
 import Link from "next/link";
+import { authApi } from "@/services/AuthService";
 
 const LoginForm = () => {
     const [spinner, setSpinner] = useState(false);
@@ -18,19 +19,10 @@ const LoginForm = () => {
     const submit = (e) => {
         e.preventDefault();
         setSpinner(true);
-        console.log("model", model);
         (async () => {
-            function artificialAwait(callback) {
-                setTimeout(function () {
-                    callback();
-                }, 5000); // 5000 миллисекунд = 5 секунд
-            }
-
-            artificialAwait(function () {
-                console.log("Пауза в 5 секунд завершена");
-                // выполняем действия после задержки
-                setSpinner(false);
-            });
+            const service = authApi(model);
+            console.log('service', service);
+            setSpinner(false)
         })();
     };
 
