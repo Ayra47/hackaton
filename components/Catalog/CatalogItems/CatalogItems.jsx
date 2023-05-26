@@ -1,5 +1,6 @@
 import CreateButton from "@/components/UI/Buttons/CreateButton";
 import s from "./CatalogItems.module.scss";
+import Pagination from "@/components/UI/Pagination/Pagination";
 
 export default function CatalogItems({ products }) {
     return (
@@ -53,6 +54,7 @@ export default function CatalogItems({ products }) {
                         );
                     })}
                 </div>
+                <Pagination totalPages={9} />
             </div>
         </div>
     );

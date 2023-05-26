@@ -110,10 +110,16 @@ input.menu__toggle {
     &--right {
         display: flex;
         margin-left: auto;
+        gap: 12px;
 
         @include md-max {
             margin-left: 0;
         }
+    }
+
+    &-cart {
+        background: #fff;
+        border-radius: 100%;
     }
 
     &-logo {

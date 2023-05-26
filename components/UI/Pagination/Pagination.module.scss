@@ -1,0 +1,19 @@
+@import '/styles/variables';
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 12px 0;
+
+    a {
+        background: $color-red;
+        border-radius: 100%;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+    }
+}

@@ -56,7 +56,7 @@ export default function Header(props) {
                         <div className={s["menu__item--right"]}>
                         <li>
                             <Link
-                                className={`${s.menu__item}`}
+                                className={`${s.menu__item} ${s['menu__item-cart']}`}
                                 href={"/account"}
                             >
                                 <img width={25} src="/svg/shopping-cart.svg" alt="cart" />
