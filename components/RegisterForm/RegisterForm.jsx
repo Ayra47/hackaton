@@ -47,7 +47,7 @@ const RegisterForm = () => {
                             Email
                         </label>
                         <CreateInput
-                            value={model.login}
+                            value={model.email}
                             onChange={(e) =>
                                 changeField("email", e.target.value)
                             }
