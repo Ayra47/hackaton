@@ -62,10 +62,11 @@ const MainFilter = (props) => {
             <div className={s["filter__entity-items"]}>
                 {props.options.map((item, index) => (
                     <div className={s["filter__entity-item"]} key={index}>
-                        <input type="checkbox" defaultChecked={item.active} />
-                        <Link href={item.link} key={index}>
+                        <input id={`${item.name}${index}`} type="checkbox" defaultChecked={item.active} />
+                        {/* <Link href={item.link} key={index}>
                             {item.name}
-                        </Link>
+                        </Link> */}
+                        <label htmlFor={`${item.name}${index}`}>{item.name}</label>
                     </div>
                 ))}
             </div>

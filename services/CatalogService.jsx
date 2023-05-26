@@ -1,3 +1,9 @@
+import ky from "ky"
+
+const baseApi = ky.create({
+    prefixUrl: `${process.env.NEXT_PUBLIC_HOST_API}/`
+})
+
 const filterItems = [
     {
         name: "Овощи, фрукты",
@@ -86,8 +92,9 @@ const productItems = [
     },
 ]
 
-export const getCatalogItems = () => {
-    return productItems
+export const getCatalogItems = async(page) => {
+    console.log('page', page);
+    return await baseApi.get(`products?page=${page}`).json();
 }
 
 export const getFilterData = () => {

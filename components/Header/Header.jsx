@@ -3,11 +3,9 @@
 import Link from "next/link";
 import s from "./Header.module.scss";
 import { useEffect, useRef, useState } from "react";
-import { deleteCookie, getCookie } from "cookies-next";
-import { CheckUser } from "@/services/AuthService";
+import { deleteCookie } from "cookies-next";
 
 export default function Header(props) {
-    const [user, setUser] = useState("")
     const sidebarRef = useRef(null);
     const [showSideBar, setShowSideBar] = useState(false);
 
@@ -16,16 +14,6 @@ export default function Header(props) {
             sidebarRef.current.contains(e.target) || setShowSideBar(false);
         document.addEventListener("click", onClick);
         return () => document.removeEventListener("click", onClick);
-    }, []);
-
-    useEffect(() => {
-        (async function() {
-            try {
-                const token = getCookie("jwt");
-                const service = await CheckUser(token)
-                setUser(service.logged_in_as)
-            } catch(e) {}
-        })()
     }, []);
 
     function exit(){
@@ -70,7 +58,7 @@ export default function Header(props) {
                             Партнёрам
                         </Link>
                     </li>
-                    {user ? (
+                    {props.user ? (
                         <div className={s["menu__item--right"]}>
                         <li>
                             <Link

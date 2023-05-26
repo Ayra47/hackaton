@@ -7,18 +7,22 @@ const GetFilter = () => {
     return getFilterData()
 }
 
-const getItems = () => {
-    return getCatalogItems();
+const getItems = async(page) => {
+    if (!page) {
+        page = 1;
+    }
+    const service = await getCatalogItems(page);
+    return await service[0];
 }
 
-export default function Page() {
+export default async function Page({searchParams}) {
     const filterItems = GetFilter();
-    const catalogItems = getItems();
+    const catalogItems = await getItems(searchParams.page);
 
     return (
         <CatalogLayout 
             filter={<Filter filter={filterItems} />}
-            catalog={<CatalogItems products={catalogItems} />}
+            catalog={<CatalogItems currentPage={searchParams.page} totalPages={catalogItems.total_pages} products={catalogItems.data} />}
         />
     )
 }
