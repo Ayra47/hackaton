@@ -1,11 +1,9 @@
 "use client"
 
-import { CheckUser } from "@/services/AuthService";
-import { deleteCookie, getCookie } from "cookies-next";
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import PrivateArea from "@/components/Account/PrivateArea/PrivateArea";
 
-export default function Page () {
+export default function Page() {
+
     const [user, setUser] = useState()
 
     useEffect(() => {
@@ -25,19 +23,6 @@ export default function Page () {
     }, [])
 
     return (
-        <div style={{display: "flex", flexDirection: "column"}} className="w-container">
-            <div>
-                hello {user}
-            </div>
-            <Link href='/account/setting'>
-                setting page
-            </Link>
-            <Link href='/account/products'>
-                products page
-            </Link>
-            <Link href='/account/cart'>
-                cart page
-            </Link>
-        </div>
+        <PrivateArea user={user} />
     )
 }
