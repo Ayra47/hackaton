@@ -13,7 +13,7 @@ export default function PrivateArea({user}) {
             <div className={s["accaunt_conteiner"]}>
             <img src="/images/user.svg" alt="account"/>
                 <div>
-                    <label  className="accaunt.text-style">Привет "{user}"</label>
+                    <label  className="accaunt.text-style">Привет &quot;{user}&quot;</label>
                 </div>
                 <Link href='/account/setting'>
                     Настройки
