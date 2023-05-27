@@ -73,7 +73,7 @@ export default function CatalogItems({ products, totalPages, currentPage }) {
                                         </div>
                                     )}
                                     <div className={s["catalog__item-name"]}>
-                                        {item.product_name}
+                                        {item.name}
                                     </div>
                                     <div
                                         className={
