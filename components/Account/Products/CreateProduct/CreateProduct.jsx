@@ -6,6 +6,7 @@ import CreateButton from "@/components/UI/Buttons/CreateButton";
 import Link from "next/link";
 import { createProduct } from "@/services/CatalogService";
 import { getCookie, setCookie } from "cookies-next";
+import s from "./CreateProduct.module.scss";
 
 export default function CreateProduct() {
     const [model, setModel] = useState({

@@ -1,10 +1,7 @@
-.accaunt {
-    &_conteiner {
-
+.account {
+    &__container {
         display: flex;
         flex-direction: column;
-
-        max-width: 200px;
         gap: 10px;
 
         background: #C9D6FF;

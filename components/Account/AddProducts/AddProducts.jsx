@@ -8,7 +8,7 @@ import s from "./AddProducts.module.scss";
 export default function AddProducts() {
     return (
         <div style={{ display: "flex", flexDirection: "column" }} className="w-container">
-            <div className={s["accaunt_conteiner"]}>
+            <div className={s["account__container"]}>
                 <Link href="/account">
                     <CreateButton color="orange">
                         Вернуться в лк
@@ -19,7 +19,8 @@ export default function AddProducts() {
                         Добавить новый товар
                     </CreateButton>
                 </Link>
-                <ViewProduct/>
+                
+                <ViewProduct />
             </div>
         </div>
 

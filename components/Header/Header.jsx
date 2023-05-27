@@ -72,7 +72,7 @@ export default function Header(props) {
                         <li>
                             <Link
                                 className={`${s.menu__item} ${s['menu__item-cart']}`}
-                                href={"/account"}
+                                href={"/account/cart"}
                             >
                                 {countCart}
                                 <img width={25} src="/svg/shopping-cart.svg" alt="cart" />

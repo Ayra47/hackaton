@@ -1,9 +1,10 @@
 "use client"
-
 import PrivateArea from "@/components/Account/PrivateArea/PrivateArea";
+import { CheckUser } from "@/services/AuthService";
+import { getCookie } from "cookies-next";
+import { useEffect, useState } from "react";
 
 export default function Page() {
-
     const [user, setUser] = useState()
 
     useEffect(() => {

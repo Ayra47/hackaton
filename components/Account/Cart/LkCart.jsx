@@ -2,16 +2,16 @@
 
 import CreateButton from "@/components/UI/Buttons/CreateButton";
 import s from "./Cart.module.scss";
-import { removeProduct } from "@/services/CatalogService";
+import { deleteProduct } from "@/services/CatalogService";
 import { getCookie } from "cookies-next";
 
-export default function Cart({ products, setProducts }) {
-    const removeItem = async(id) => {
+export default function LkCart({ products, setProducts }) {
+    const deleteItem = async(id) => {
         const token = getCookie("jwt")
-        const service = await removeProduct(token, id)
+        const service = await deleteProduct(token, id)
         console.log('serv', service);
         if (service.success) {
-            setProducts(service.data.newData.items)
+            setProducts(service.data)
         }
     }
 
@@ -22,22 +22,21 @@ export default function Cart({ products, setProducts }) {
                 <div className={s.catalog}>
                     <div className={s.catalog__items}>
                         {products.map((item, index) => {
-                            if (item.product) {
-                                let percent = 0;
-                            if (item.product.old_price) {
+                            let percent = 0;
+                            if (item.old_price) {
                                 percent =
-                                    ((item.product.old_price - item.product.price) /
-                                        item.product.old_price) *
+                                    ((item.old_price - item.price) /
+                                        item.old_price) *
                                     100;
                             }
                             return (
                                 <div className={s.catalog__item} key={index}>
                                     <img
                                         src={'/images/product1.jpg'}
-                                        alt={item.product.product_name}
+                                        alt={item.product_name}
                                         className={s["catalog__item-img"]}
                                     />
-                                    {item.product.old_price ? (
+                                    {item.old_price ? (
                                         <div
                                             className={
                                                 s["catalog__item-price-wrapper"]
@@ -46,7 +45,7 @@ export default function Cart({ products, setProducts }) {
                                             <div
                                                 className={`${s["catalog__item-price"]} ${s["catalog__item-price--discount"]}`}
                                             >
-                                                {item.product.price} ₽
+                                                {item.price} ₽
                                             </div>
                                             <div
                                                 className={
@@ -58,7 +57,7 @@ export default function Cart({ products, setProducts }) {
                                                 <div
                                                     className={`${s["catalog__item-price"]} ${s["catalog__item-price--old"]}`}
                                                 >
-                                                    {item.product.old_price} ₽
+                                                    {item.old_price} ₽
                                                 </div>
                                                 <div
                                                     className={`${s["catalog__item-price"]} ${s["catalog__item-price--percent"]}`}
@@ -71,11 +70,11 @@ export default function Cart({ products, setProducts }) {
                                         <div
                                             className={s["catalog__item-price"]}
                                         >
-                                            {item.product.price} ₽
+                                            {item.price} ₽
                                         </div>
                                     )}
                                     <div className={s["catalog__item-name"]}>
-                                        {item.product.name}
+                                        {item.name}
                                     </div>
                                     <div
                                         className={
@@ -86,9 +85,9 @@ export default function Cart({ products, setProducts }) {
                                             <CreateButton
                                                 color="red"
                                                 size="sm"
-                                                onClick={() => removeItem(item.id)}
+                                                onClick={() => deleteItem(item.id)}
                                             >
-                                                Убрать из корзины
+                                                Убрать из базы
                                             </CreateButton>
                                         </div>
                                         <div style={{ marginTop: "auto" }}>
@@ -102,7 +101,6 @@ export default function Cart({ products, setProducts }) {
                                     </div>
                                 </div>
                             );
-                            }
                         })}
                     </div>
                     <div style={{marginTop: "20px"}}>

@@ -75,9 +75,17 @@ export const addProduct = async(token, product_id) => {
 }
 
 export const removeProduct = async(token, id) => {
-    return await secureApi(token).delete(`cart/item/${id}`).json();
+    return await secureApi(token).delete(`cart/item/product/${id}`).json();
+}
+
+export const deleteProduct = async(token, id) => {
+    return await secureApi(token).delete(`products/item/${id}`).json();
 }
 
 export const getCart = async(token) => {
     return await secureApi(token).get(`cart`).json();
+}
+
+export const getFarmerProducts = async(token, id) => {
+    return await secureApi(token).get(`products/farmer/${id}`).json();
 }

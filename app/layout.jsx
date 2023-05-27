@@ -22,12 +22,13 @@ const getUser = async () => {
 
 export default async function RootLayout({ children }) {
     const user = await getUser();
+    const Mycomponent = children;
 
     return (
         <html lang="en">
             <body>
                 <Header user={user} />
-                <main style={{paddingBottom: "40px"}}>{children}</main>
+                <main user={user} style={{paddingBottom: "40px"}}>{children}</main>
             </body>
         </html>
     );
