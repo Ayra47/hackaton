@@ -1,0 +1,22 @@
+.accaunt {
+    &_conteiner {
+
+        display: flex;
+        flex-direction: column;
+
+        max-width: 200px;
+        gap: 10px;
+
+        background: #C9D6FF;
+        background: -webkit-linear-gradient(to right, #E2E2E2, #C9D6FF);
+        background: linear-gradient(to right, #E2E2E2, #C9D6FF);
+        padding: 25px;
+        border-radius: 8px;
+    
+    }
+
+    .text-style{
+        color: white;
+    }
+
+}

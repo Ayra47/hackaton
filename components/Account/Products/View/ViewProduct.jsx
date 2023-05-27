@@ -1,3 +1,3 @@
 export default function ViewProduct() {
-    return <h1>this view blocks</h1>
+    return <h1>AgroUnits</h1>
 }

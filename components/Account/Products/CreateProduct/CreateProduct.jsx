@@ -1,7 +1,6 @@
 "use client";
 
 import CreateInput from "@/components/UI/Inputs/CreateInput";
-import s from "./CreateProduct.module.scss";
 import { useState } from "react";
 import CreateButton from "@/components/UI/Buttons/CreateButton";
 import Link from "next/link";
