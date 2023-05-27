@@ -12,7 +12,7 @@ const getItems = async(page) => {
         page = 1;
     }
     const service = await getCatalogItems(page);
-    return await service[0];
+    return await service;
 }
 
 export default async function Page({searchParams}) {
@@ -22,7 +22,7 @@ export default async function Page({searchParams}) {
     return (
         <CatalogLayout 
             filter={<Filter filter={filterItems} />}
-            catalog={<CatalogItems currentPage={searchParams.page} totalPages={catalogItems.total_pages} products={catalogItems.data} />}
+            catalog={<CatalogItems currentPage={searchParams.page} totalPages={catalogItems.data.last_page} products={catalogItems.data.data} />}
         />
     )
 }

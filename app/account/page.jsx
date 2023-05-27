@@ -13,12 +13,11 @@ export default function Page () {
             try {
                 const token = getCookie("jwt")
                 const checked = await CheckUser(token)
-                console.log('checked', checked);
                 if (!checked) {
                     deleteCookie("jwt");
                     window.location = `${process.env.NEXT_PUBLIC_HOST}/login`
                 }
-                setUser(checked.logged_in_as)
+                setUser(checked.email)
             } catch(e) {
                 window.location = `${process.env.NEXT_PUBLIC_HOST}/login`
             }
@@ -35,6 +34,9 @@ export default function Page () {
             </Link>
             <Link href='/account/products'>
                 products page
+            </Link>
+            <Link href='/account/cart'>
+                cart page
             </Link>
         </div>
     )

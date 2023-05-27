@@ -23,8 +23,8 @@ const LoginForm = () => {
         setErrors("");
         (async () => {
             const service = await authApi(model);
-            if (service.success) {
-                setCookie('jwt', service.access_token)
+            if (service.status) {
+                setCookie('jwt', service.authorisation.token)
                 window.location = `${process.env.NEXT_PUBLIC_HOST}/account`
             } else {
                 setErrors(service.error)

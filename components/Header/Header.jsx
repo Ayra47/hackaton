@@ -3,11 +3,12 @@
 import Link from "next/link";
 import s from "./Header.module.scss";
 import { useEffect, useRef, useState } from "react";
-import { deleteCookie } from "cookies-next";
+import { deleteCookie, getCookie } from "cookies-next";
 
 export default function Header(props) {
     const sidebarRef = useRef(null);
     const [showSideBar, setShowSideBar] = useState(false);
+    const [countCart, setCountCart] = useState()
 
     useEffect(() => {
         const onClick = (e) =>
@@ -15,6 +16,14 @@ export default function Header(props) {
         document.addEventListener("click", onClick);
         return () => document.removeEventListener("click", onClick);
     }, []);
+
+    useEffect(() => {
+        (async function() {
+            const count = getCookie("countCart");
+            setCountCart(count)
+        })()
+    }, [])
+    
 
     function exit(){
         deleteCookie("jwt");
@@ -65,6 +74,7 @@ export default function Header(props) {
                                 className={`${s.menu__item} ${s['menu__item-cart']}`}
                                 href={"/account"}
                             >
+                                {countCart}
                                 <img width={25} src="/svg/shopping-cart.svg" alt="cart" />
                             </Link>
                         </li>

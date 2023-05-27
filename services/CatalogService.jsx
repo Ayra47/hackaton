@@ -1,8 +1,15 @@
 import ky from "ky"
 
 const baseApi = ky.create({
-    prefixUrl: `${process.env.NEXT_PUBLIC_HOST_API}/`
+    prefixUrl: `${process.env.NEXT_PUBLIC_HOST_API}/api/`
 })
+
+const secureApi = (token) =>
+    baseApi.extend({
+        headers: new Headers({
+            authorization: `Bearer ${token}`,
+        }),
+    });
 
 const filterItems = [
     {
@@ -51,52 +58,26 @@ const filterItems = [
     }
 ]
 
-const productItems = [
-    {
-        id: 1,
-        name: 'Стейк из грудки индейки Индилайт 525г',
-        price: '100',
-        description: 'вкусный Стейк из грудки индейки Индилайт 525г',
-        old_price: '150',
-        image: '/images/start-banner/fish.png'
-    },
-    {
-        id: 2,
-        name: 'Стейк из грудки индейки Индилайт 525г2',
-        price: '100',
-        description: 'вкусный сыр',
-        image: '/images/start-banner/fish.png'
-    },
-    {
-        id: 3,
-        name: 'Стейк Мираторг Black Angus Рибай из мраморной говядины 250г',
-        price: '90',
-        description: 'вкусный сыр',
-        old_price: '190',
-        image: '/images/start-banner/fish.png'
-    },
-    {
-        id: 4,
-        name: 'Стейк Мираторг Black Angus Рибай из мраморной говядины 250г2',
-        price: '90',
-        description: 'вкусный сыр',
-        old_price: '190',
-        image: '/images/start-banner/fish.png'
-    },
-    {
-        id: 5,
-        name: 'Стейк Мираторг Black Angus Рибай из мраморной говядины 250г3',
-        price: '90',
-        description: 'вкусный сыр',
-        image: '/images/start-banner/fish.png'
-    },
-]
-
 export const getCatalogItems = async(page) => {
-    console.log('page', page);
     return await baseApi.get(`products?page=${page}`).json();
 }
 
 export const getFilterData = () => {
     return filterItems
+}
+
+export const createProduct = async(token, model) => {
+    return await secureApi(token).post(`products`, {json: model}).json();
+}
+
+export const addProduct = async(token, product_id) => {
+    return await secureApi(token).post(`cart/item/${product_id}`).json();
+}
+
+export const removeProduct = async(token, id) => {
+    return await secureApi(token).delete(`cart/item/${id}`).json();
+}
+
+export const getCart = async(token) => {
+    return await secureApi(token).get(`cart`).json();
 }

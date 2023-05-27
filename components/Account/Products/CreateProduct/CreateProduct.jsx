@@ -5,6 +5,8 @@ import s from "./CreateProduct.module.scss";
 import { useState } from "react";
 import CreateButton from "@/components/UI/Buttons/CreateButton";
 import Link from "next/link";
+import { createProduct } from "@/services/CatalogService";
+import { getCookie, setCookie } from "cookies-next";
 
 export default function CreateProduct() {
     const [model, setModel] = useState({
@@ -13,14 +15,23 @@ export default function CreateProduct() {
         price: "",
         old_price: ""
     });
+    const [errors, setErrors] = useState()
+    const [success, setSuccess] = useState()
 
     const changeField = (field, value) => {
         setModel({ ...model, [field]: value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
-        console.log('model', model);
+        setErrors(0);
+        setSuccess(0);
+        const token = getCookie("jwt");
+        const service = await createProduct(token, model);
+        if (service.success) {
+        } else {
+            setErrors(service.errors)
+        }
     }
 
     return (
@@ -31,7 +42,7 @@ export default function CreateProduct() {
                     <div className={`${s.product__content} base-form__content`}>
                         <div className={s["product__content__text"]}>Добавление товара</div>
                         <div className="form-group">
-                            <label cclassName={s["product__content__text"]} htmlFor="">
+                            <label className={s["product__content__text"]} htmlFor="">
                                 Название товара
                             </label>
                             <CreateInput
@@ -43,9 +54,10 @@ export default function CreateProduct() {
                                 type="text"
                                 placeholder="Сыр"
                             />
+                            {errors && errors.name ? errors.name : null}
                         </div>
                         <div className="form-group">
-                            <label cclassName={s["product__content__text"]} htmlFor="">
+                            <label className={s["product__content__text"]} htmlFor="">
                                 Описание
                             </label>
                             <CreateInput
@@ -59,7 +71,7 @@ export default function CreateProduct() {
                             />
                         </div>
                         <div className="form-group">
-                            <label cclassName={s["product__content__text"]}  htmlFor="">
+                            <label className={s["product__content__text"]}  htmlFor="">
                                 Текущая цена
                             </label>
                             <CreateInput
@@ -71,9 +83,10 @@ export default function CreateProduct() {
                                 type="text"
                                 placeholder="200"
                             />
+                            {errors && errors.price ? errors.price : ""}
                         </div>
                         <div className="form-group">
-                            <label cclassName={s["product__content__text"]}  htmlFor="">
+                            <label className={s["product__content__text"]}  htmlFor="">
                                 Старая цена
                             </label>
                             <CreateInput
@@ -87,6 +100,9 @@ export default function CreateProduct() {
                             />
                         </div>
                         <CreateButton color='orange'>Добавить товар</CreateButton>
+                        {
+                            success ? "Добавлено" : null
+                        }
                     </div>
                 </form>
             </div>

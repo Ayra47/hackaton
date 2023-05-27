@@ -1,7 +1,7 @@
 import ky from "ky";
 
 const baseApi = ky.create({
-    prefixUrl: `${process.env.NEXT_PUBLIC_HOST_API}/`,
+    prefixUrl: `${process.env.NEXT_PUBLIC_HOST_API}/api/`,
 });
 
 const secureApi = (token) =>
@@ -20,9 +20,5 @@ export const authApi = async (model) => {
 };
 
 export const CheckUser = async (token) => {
-    try {
-        return await secureApi(token).post("protected").json();
-    } catch(e) {
-        return 0;
-    }
+    return await secureApi(token).post("me").json();
 };

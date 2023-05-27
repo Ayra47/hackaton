@@ -1,41 +1,42 @@
 "use client";
 
 import CreateButton from "@/components/UI/Buttons/CreateButton";
-import s from "./CatalogItems.module.scss";
-import Pagination from "@/components/UI/Pagination/Pagination";
-import { addProduct } from "@/services/CatalogService";
+import s from "./Cart.module.scss";
+import { removeProduct } from "@/services/CatalogService";
 import { getCookie } from "cookies-next";
 
-export default function CatalogItems({ products, totalPages, currentPage }) {
-    
-    const addItem = async(id) => {
+export default function Cart({ products, setProducts }) {
+    const removeItem = async(id) => {
         const token = getCookie("jwt")
-        const service = await addProduct(token, id)
+        const service = await removeProduct(token, id)
         console.log('serv', service);
+        if (service.success) {
+            setProducts(service.data.newData.items)
+        }
     }
 
     return (
         <div className={s.section__catalog}>
-            <h1>Страница #{currentPage ?? 1}</h1>
+            <div className="w-container">
             {Array.isArray(products) ? (
                 <div className={s.catalog}>
                     <div className={s.catalog__items}>
                         {products.map((item, index) => {
                             let percent = 0;
-                            if (item.old_price) {
+                            if (item.product.old_price) {
                                 percent =
-                                    ((item.old_price - item.price) /
-                                        item.old_price) *
+                                    ((item.product.old_price - item.product.price) /
+                                        item.product.old_price) *
                                     100;
                             }
                             return (
                                 <div className={s.catalog__item} key={index}>
                                     <img
                                         src={'/images/product1.jpg'}
-                                        alt={item.product_name}
+                                        alt={item.product.product_name}
                                         className={s["catalog__item-img"]}
                                     />
-                                    {item.old_price ? (
+                                    {item.product.old_price ? (
                                         <div
                                             className={
                                                 s["catalog__item-price-wrapper"]
@@ -44,7 +45,7 @@ export default function CatalogItems({ products, totalPages, currentPage }) {
                                             <div
                                                 className={`${s["catalog__item-price"]} ${s["catalog__item-price--discount"]}`}
                                             >
-                                                {item.price} ₽
+                                                {item.product.price} ₽
                                             </div>
                                             <div
                                                 className={
@@ -56,7 +57,7 @@ export default function CatalogItems({ products, totalPages, currentPage }) {
                                                 <div
                                                     className={`${s["catalog__item-price"]} ${s["catalog__item-price--old"]}`}
                                                 >
-                                                    {item.old_price} ₽
+                                                    {item.product.old_price} ₽
                                                 </div>
                                                 <div
                                                     className={`${s["catalog__item-price"]} ${s["catalog__item-price--percent"]}`}
@@ -69,11 +70,11 @@ export default function CatalogItems({ products, totalPages, currentPage }) {
                                         <div
                                             className={s["catalog__item-price"]}
                                         >
-                                            {item.price} ₽
+                                            {item.product.price} ₽
                                         </div>
                                     )}
                                     <div className={s["catalog__item-name"]}>
-                                        {item.product_name}
+                                        {item.product.name}
                                     </div>
                                     <div
                                         className={
@@ -82,11 +83,11 @@ export default function CatalogItems({ products, totalPages, currentPage }) {
                                     >
                                         <div style={{ marginTop: "auto" }}>
                                             <CreateButton
-                                                color="blue"
+                                                color="red"
                                                 size="sm"
-                                                onClick={() => addItem(item.id)}
+                                                onClick={() => removeItem(item.id)}
                                             >
-                                                Добавить в корзину
+                                                Убрать из корзины
                                             </CreateButton>
                                         </div>
                                         <div style={{ marginTop: "auto" }}>
@@ -102,11 +103,14 @@ export default function CatalogItems({ products, totalPages, currentPage }) {
                             );
                         })}
                     </div>
-                    <Pagination totalPages={totalPages} />
+                    <div style={{marginTop: "20px"}}>
+                        <CreateButton size='xxl'>Перейти к оформлению заказа</CreateButton>
+                    </div>
                 </div>
             ) : (
-                "Нет данных по текущему запросу"
+                "Корзина пуста"
             )}
+            </div>
         </div>
     );
 }

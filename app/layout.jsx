@@ -27,7 +27,7 @@ export default async function RootLayout({ children }) {
         <html lang="en">
             <body>
                 <Header user={user} />
-                <main>{children}</main>
+                <main style={{paddingBottom: "40px"}}>{children}</main>
             </body>
         </html>
     );
