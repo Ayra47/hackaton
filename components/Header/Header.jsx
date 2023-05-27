@@ -8,7 +8,6 @@ import { deleteCookie, getCookie } from "cookies-next";
 export default function Header(props) {
     const sidebarRef = useRef(null);
     const [showSideBar, setShowSideBar] = useState(false);
-    const [countCart, setCountCart] = useState()
 
     useEffect(() => {
         const onClick = (e) =>
@@ -17,17 +16,9 @@ export default function Header(props) {
         return () => document.removeEventListener("click", onClick);
     }, []);
 
-    useEffect(() => {
-        (async function() {
-            const count = getCookie("countCart");
-            setCountCart(count)
-        })()
-    }, [])
-    
-
-    function exit(){
+    function exit() {
         deleteCookie("jwt");
-        window.location = `${process.env.NEXT_PUBLIC_HOST}/login`
+        window.location = `${process.env.NEXT_PUBLIC_HOST}/login`;
     }
 
     return (
@@ -69,25 +60,45 @@ export default function Header(props) {
                     </li>
                     {props.user ? (
                         <div className={s["menu__item--right"]}>
-                        <li>
-                            <Link
-                                className={`${s.menu__item} ${s['menu__item-cart']}`}
-                                href={"/account/cart"}
-                            >
-                                {countCart}
-                                <img width={25} src="/svg/shopping-cart.svg" alt="cart" />
-                            </Link>
-                        </li>
                             <li>
                                 <Link
-                                    className={`${s.menu__item} ${s['menu__item-lk']}`}
+                                    className={`${s.menu__item} ${s["menu__item-cart"]}`}
+                                    href="https://t.me/Ayra47"
+                                >
+                                    <img
+                                        width={20}
+                                        src="/svg/phone.svg"
+                                        alt="cart"
+                                    />
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    className={`${s.menu__item} ${s["menu__item-cart"]}`}
+                                    href={"/account/cart"}
+                                >
+                                    <img
+                                        width={20}
+                                        src="/svg/shopping-cart.svg"
+                                        alt="cart"
+                                    />
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    className={`${s.menu__item} ${s["menu__item-lk"]}`}
                                     href={"/account"}
                                 >
                                     <img src="/images/user.svg" alt="account" />
                                 </Link>
                             </li>
                             <li>
-                            <button onClick={exit} className={`${s.menu__item} ${s['menu__item-exit']}`}>Выход</button>
+                                <button
+                                    onClick={exit}
+                                    className={`${s.menu__item} ${s["menu__item-exit"]}`}
+                                >
+                                    Выход
+                                </button>
                             </li>
                         </div>
                     ) : (
