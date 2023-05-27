@@ -3,6 +3,7 @@ import { HomeStartBanner } from "@/services/HomeService";
 import Notify from "@/components/Home/Notifications/Notifications";
 import { BkgAnimationBox } from "@/components/UI/BkgAnimationBox/BkgAnimationBox";
 import StartBanner from "@/components/Home/Start/StartBanner";
+import Callback from "@/components/Home/Callback/Callback";
 
 const GetItems = () => {
     return HomeStartBanner()
@@ -17,6 +18,7 @@ const Page = () => {
             <HotRecomendation products={startBannerItems} />
             {/* <BkgAnimationBox toShow={true} /> */}
             <Notify />
+            <Callback />
         </div>
     );
 };

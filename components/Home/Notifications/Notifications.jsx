@@ -8,12 +8,14 @@ export default function Notify() {
         <div className={s.section__notify}>
             <div className={`${s.notify} w-container`}>
                 <div className={s.notify__title}>
-                    Подписка на рассылку
+                    Сервис в телеграмме
                 </div>
                 <div className="notify__subtitle">
-                    Подпишитесь на нашу рассылку и получайте еженедельную подборку лучших товаров
+                    Общение с фермерами, получение уведомлений о сообщениях и горячих акциях <span>(возможно отключить)</span>
                 </div>
-                <Link href={'/telebot'}>AgroUnits</Link>
+                <Link href={'/telebot'}>
+                    <CreateButton size='xxl'>AgroUnits</CreateButton>
+                </Link>
             </div>
         </div>
     )
